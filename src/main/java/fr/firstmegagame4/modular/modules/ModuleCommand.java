@@ -26,7 +26,8 @@ public class ModuleCommand implements Command<Object> {
                     for (ModuleCommandParameter param: this.params) {
                         params.add(new ModuleFunctionParameter(param.getName(), context.getArgument(param.getName(), Object.class)));
                     }
-                    new ModuleTask(commandModules.getAsJsonObject(commandModule).getAsJsonObject("execute"), params);
+                    new ModuleTask(commandModules.getAsJsonObject(commandModule).getAsJsonArray("execute"), params);
+                    return 1;
                 }
             }
         }
